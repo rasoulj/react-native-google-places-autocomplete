@@ -20,6 +20,8 @@ import debounce from 'lodash.debounce';
 
 const WINDOW = Dimensions.get('window');
 
+
+
 const defaultStyles = {
   container: {
     flex: 1,
@@ -458,7 +460,7 @@ export default class GooglePlacesAutocomplete extends Component {
 
   _request = (text) => {
     this._abortRequests();
-    if (text.length >= this.props.minLength) {
+    if (this.props.showResult(text)) {
       const request = new XMLHttpRequest();
       this._requests.push(request);
       request.timeout = this.props.timeout;
